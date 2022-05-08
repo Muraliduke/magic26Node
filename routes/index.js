@@ -19,7 +19,7 @@ var smtpTransport = require('nodemailer-smtp-transport');
 // })
 // );
 /* GET home page. */
-router.post('/api', function(req, res, next) {
+router.post('/register', function(req, res, next) {
  
   const saveData = req.body;
 //   let {firstName,
