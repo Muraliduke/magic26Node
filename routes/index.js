@@ -61,7 +61,7 @@ router.post('/api', function(req, res, next) {
 
         saveData["_id"] = uuidv4();
         let dd = new Date()
-        saveData["timestamp"] = dd.toLocaleDateString();
+        saveData["timestamp"] = dd.toLocaleString();
         parsedData.push(saveData);
         fs.writeFile(__basedir + '/model/data.json', JSON.stringify(parsedData), (err) => {
             if(err){
