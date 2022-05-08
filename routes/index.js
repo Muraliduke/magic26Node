@@ -71,4 +71,11 @@ router.post('/api', function(req, res, next) {
     });
 });
 
+router.get('/alldata', (req,res)=> {
+  fs.readFile(__basedir + '/model/data.json', function(err, data) { // get the data from the file
+    const rawData = data.toString();
+    const parsedData = JSON.parse(rawData);
+    res.send(parsedData)
+  })
+})
 module.exports = router;
