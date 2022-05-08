@@ -78,4 +78,22 @@ router.get('/alldata', (req,res)=> {
     res.send(parsedData)
   })
 })
+
+router.delete('/:id', (req, res, next)=> {
+let id = req.params.id;
+fs.readFile(__basedir + '/model/data.json', function(err, data) { // get the data from the file
+  const rawData = data.toString();
+  const parsedData = JSON.parse(rawData);
+  const remData = parsedData.filter((a)=> a._id !== id);
+  fs.writeFile(__basedir + '/model/data.json', JSON.stringify(remData), (err) => {
+      if(err){
+        res.status(500).send({message: err.toString()})
+      }else{
+        res.status(200).send({message: "successfully removed " + id})
+      }
+  });            
+});
+})
+
+
 module.exports = router;
